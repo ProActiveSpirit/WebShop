@@ -1,0 +1,11 @@
+export { default as HomePC } from './HomePC';
+export { default as HomePlatform } from './HomePlatform';
+export { default as GameList } from './GameList';
+export { default as Uitgevers } from './Uitgevers';
+export { default as BestSellers } from './BestSellers';
+export { default as Catergory } from './Catergory';
+export { default as Banner } from './Banner';
+export { default as Newsroom } from './Newsroom';
+export { default as Nieuwsbrief } from './Nieuwsbrief';
+export { default as XboxDescription } from './XboxDescription';
+export { default as SeeMore } from './SeeMore';

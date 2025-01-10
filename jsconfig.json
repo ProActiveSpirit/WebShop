@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": [
+    "src/**/*"
+, "src/sections/pc/RockStar.js", "src/sections/pc/Uitgevers.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
