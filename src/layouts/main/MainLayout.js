@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // next
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
-import useResponsive from '../../hooks/useResponsive';
+import useResponsive from "../../hooks/useResponsive";
 
 // @mui
-import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 //
-const Header = dynamic(() => import('./Header'), { ssr: false });
-const Footer = dynamic(() => import('./Footer'), { ssr: false });
+const Header = dynamic(() => import("./Header"), { ssr: false });
+const Footer = dynamic(() => import("./Footer"), { ssr: false });
 
 // ----------------------------------------------------------------------
 
@@ -21,23 +21,24 @@ MainLayout.propTypes = {
 
 export default function MainLayout({ children }) {
   const { pathname } = useRouter();
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
 
-  const isDesktop = useResponsive('up', 1440);
-  const isMobile = useResponsive('up', 700);
+  const isDesktop = useResponsive("up", 1440);
+  const isMobile = useResponsive("up", 700);
 
   return (
-    <Box sx={{ bgcolor: '#0B0B0B', minHeight: '100vh', width: '100%' }}>
+    <Box sx={{ bgcolor: "#0B0B0B", minHeight: "100vh", width: "100%" }}>
       <Header />
 
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          maxWidth: '100%',
-          mt: isDesktop ? '94px' : '35px',
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          maxWidth: "100%",
+          mt: isDesktop ? "94px" : "35px",
           p: 0,
+          overflowX: "hidden",
         }}
       >
         <Box
@@ -45,6 +46,8 @@ export default function MainLayout({ children }) {
           sx={{
             flexGrow: 1,
             p: 0,
+            width: "100%",
+            maxWidth: "100vw",
             ...(!isHome && {
               pt: { xs: 8, md: 11 },
             }),
