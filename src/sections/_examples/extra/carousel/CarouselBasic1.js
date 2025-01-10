@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { useState, useRef } from 'react';
+import PropTypes from "prop-types";
+import { useState, useRef } from "react";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Card } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import { Card } from "@mui/material";
 // components
-import Image from '../../../../components/image';
-import Carousel, { CarouselArrowIndex } from '../../../../components/carousel';
+import Image from "../../../../components/image";
+import Carousel, { CarouselArrowIndex } from "../../../../components/carousel";
 
 // ----------------------------------------------------------------------
 
@@ -13,12 +13,14 @@ CarouselBasic1.propTypes = {
   data: PropTypes.array,
 };
 
-export default function CarouselBasic1({ data }) {
+export default function CarouselBasic1({ data = [] }) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
 
-  const [currentIndex, setCurrentIndex] = useState(theme.direction === 'rtl' ? data.length - 1 : 0);
+  const [currentIndex, setCurrentIndex] = useState(
+    theme.direction === "rtl" ? data.length - 1 : 0
+  );
 
   const carouselSettings = {
     dots: false,
@@ -26,7 +28,7 @@ export default function CarouselBasic1({ data }) {
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    rtl: Boolean(theme.direction === 'rtl'),
+    rtl: Boolean(theme.direction === "rtl"),
     beforeChange: (current, next) => setCurrentIndex(next),
   };
 
@@ -41,9 +43,15 @@ export default function CarouselBasic1({ data }) {
   return (
     <Card>
       <Carousel ref={carouselRef} {...carouselSettings}>
-        {data.map((item) => (
-          <Image key={item.id} alt={item.title} src={item.image} ratio="1/1" />
-        ))}
+        {data.length > 0 &&
+          data.map((item) => (
+            <Image
+              key={item.id}
+              alt={item.title}
+              src={item.image}
+              ratio="1/1"
+            />
+          ))}
       </Carousel>
 
       <CarouselArrowIndex
